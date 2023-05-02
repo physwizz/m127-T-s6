@@ -7,3 +7,5 @@ export ARCH=arm64
 
 make ARCH=arm64 exynos850-m12nsxx_defconfig
 make ARCH=arm64 -j64
+
+
