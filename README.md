@@ -10,11 +10,9 @@ a127 a217 m127 f127 a135f
 
 1. Edit makefile to 
 
-CROSS_COMPILE= ~/toolchains/aarch64-linux-android-4.9-master/bin/aarch64-linux-android-
+CROSS_COMPILE= ~/toolchains/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-
 
-CC= ~/toolchains/android_prebuilts_clang_host_linux-x86_clang-5484270-9.0/bin/clang
-
-CLANG_TRIPLE= ~/toolchains/proton-clang-13-clang/bin/aarch64-linux-gnu-
+CC= ~/toolchain/clang/host/linux-x86/clang-r353983c/bin/clang
 
 2. Build
 
