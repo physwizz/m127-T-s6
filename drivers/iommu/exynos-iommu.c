@@ -1676,7 +1676,7 @@ static int sysmmu_map_pte(struct mm_struct *mm,
 
 		*ent = mk_lv2ent_spage(pte_pfn(*pte) << PAGE_SHIFT);
 
-		if (!pfnmap)
+		if (pfn_valid(pte_pfn(*pte)))
 			get_page(pte_page(*pte));
 		else
 			mk_lv2ent_pfnmap(ent);

@@ -295,6 +295,14 @@ static int __uac_clock_find_source(struct snd_usb_audio *chip,
 			return -EINVAL;
 		}
 
+		if ((size_t)&selector->baCSourceID[ret - 1] >=
+				(size_t)(chip->ctrl_intf->extra + chip->ctrl_intf->extralen)) {
+			usb_audio_err(chip,
+				"%s(): error. out of boundary, ret %d\n",
+				__func__, ret);
+			return -EINVAL;
+		}
+
 		cur = ret;
 		ret = __uac_clock_find_source(chip, fmt,
 					      selector->baCSourceID[ret - 1],
@@ -308,6 +316,14 @@ static int __uac_clock_find_source(struct snd_usb_audio *chip,
 
 			if (i == cur)
 				continue;
+
+			if ((size_t)&selector->baCSourceID[i - 1] >=
+					(size_t)(chip->ctrl_intf->extra + chip->ctrl_intf->extralen)) {
+				usb_audio_err(chip,
+					"%s(): error. out of boundary, i %d\n",
+					__func__, i);
+				break;
+			}
 
 			ret = __uac_clock_find_source(chip, fmt,
 						      selector->baCSourceID[i - 1],
@@ -389,6 +405,13 @@ static int __uac3_clock_find_source(struct snd_usb_audio *chip,
 			return -EINVAL;
 		}
 
+		if ((size_t)&selector->baCSourceID[ret - 1] >=
+				(size_t)(chip->ctrl_intf->extra + chip->ctrl_intf->extralen)) {
+			usb_audio_err(chip,
+				"%s(): error. out of boundary, ret %d\n",
+				__func__, ret);
+			return -EINVAL;
+		}
 		cur = ret;
 		ret = __uac3_clock_find_source(chip, fmt,
 					       selector->baCSourceID[ret - 1],
@@ -402,6 +425,14 @@ static int __uac3_clock_find_source(struct snd_usb_audio *chip,
 
 			if (i == cur)
 				continue;
+
+			if ((size_t)&selector->baCSourceID[i - 1] >=
+					(size_t)(chip->ctrl_intf->extra + chip->ctrl_intf->extralen)) {
+				usb_audio_err(chip,
+					"%s(): error. out of boundary, i %d\n",
+					__func__, i);
+				break;
+			}
 
 			ret = __uac3_clock_find_source(chip, fmt,
 						       selector->baCSourceID[i - 1],
